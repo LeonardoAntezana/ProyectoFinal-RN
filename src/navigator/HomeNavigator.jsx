@@ -4,6 +4,7 @@ import { UserIcon } from '../components';
 import Colors from '../constants/Colors';
 
 import HomeScreen from '../screens/Home/HomeScreen';
+import DetailsScreen from '../screens/Home/DetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,10 @@ const HomeNavigator = () => {
         <Stack.Screen
         name='Home'
         component={HomeScreen}
+        />
+        <Stack.Screen
+        name='Details'
+        component={DetailsScreen}
         />
     </Stack.Navigator>
   )
