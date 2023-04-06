@@ -1,15 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
+import { useCallApi } from '../../hooks/useCallApi';
+import BASE_URL from '../../constants/Request'
+import { ScreenCustom } from '../../components'
+import { DetailsCharacter } from '../../components';
 
 const DetailsScreen = ({route}) => {
   const {params} = route;
-  console.log(params.id)
+
+  const { data } = useCallApi(`${BASE_URL}/character/${params.id}`)
+
   return (
-    <View>
-      <Text>DetailsScreen</Text>
-    </View>
+    <ScreenCustom style={styles.screen}>
+      {data && <DetailsCharacter item={data}/>}
+    </ScreenCustom>
   )
 }
 
 export default DetailsScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  screen: {
+    paddingHorizontal: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})
