@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   text: {
+    paddingVertical: 5,
     backgroundColor: Colors.secondaryBlack,
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
