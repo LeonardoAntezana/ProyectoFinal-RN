@@ -6,6 +6,7 @@ import Colors from '../constants/Colors'
 import HomeNavigator from './HomeNavigator'; 
 import SearchNavigator from './SearchNavigator';
 import FavoritesNavigator from './FavoritesNavigator';
+import CameraNavigator from './CameraNavigator';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -55,6 +56,20 @@ const TabsNavigator = () => {
         <TabIconCustom 
         iconName='md-star'
         title='Favorites' 
+        tintColor={focused ? Colors.secondary : 'black'}
+        size={24} 
+        />
+        )
+      }}
+      />
+       <BottomTabs.Screen
+      name='Tab-camera'
+      component={CameraNavigator}
+      options={{
+        tabBarIcon: ({ focused }) => (
+        <TabIconCustom 
+        iconName='camera'
+        title='Camara' 
         tintColor={focused ? Colors.secondary : 'black'}
         size={24} 
         />

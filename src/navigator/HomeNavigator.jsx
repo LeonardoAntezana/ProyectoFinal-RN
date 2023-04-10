@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 const HomeNavigator = () => {
   return (
     <Stack.Navigator
-    screenOptions={{
+      screenOptions={{
       headerTitle: 'Rick y Morty',
       headerStyle: styles.header,
       headerTintColor: Colors.primary,
