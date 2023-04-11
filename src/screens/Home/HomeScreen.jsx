@@ -8,8 +8,8 @@ const HomeScreen = ({navigation}) => {
   
   const { data: characters, isPending } = useCallApi(`${BASE_URL}/character`);
   
-  const handleSelect = id => {
-    navigation.navigate('Details', {id})
+  const handleSelect = item => {
+    navigation.navigate('Details', {...item})
   }
 
   const renderCharacter = ({item}) => (
@@ -18,7 +18,6 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <ScreenCustom style={styles.container}>
-      
       <FlatList
       data={characters.results}
       renderItem={renderCharacter}

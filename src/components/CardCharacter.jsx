@@ -3,10 +3,10 @@ import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 
 const CardCharacter = ({ character, onSelected }) => {
-  const {id, name, image} = character;
+  const {id, name, image, gender, species, origin, status, episode} = character;
   
   return (
-    <TouchableOpacity style={styles.card} onPress={() => onSelected(id)}>
+    <TouchableOpacity style={styles.card} onPress={() => onSelected({id, name, image, gender, species, origin, status, episode})}>
       <ImageBackground style={styles.image} imageStyle={{borderRadius: 4}} source={{uri: image}}>
         <Text style={styles.text}>{name}</Text>
       </ImageBackground>
