@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { Provider } from 'react-redux';
+import store from './src/store';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import { useFonts, RobotoCondensed_400Regular, RobotoCondensed_700Bold } from '@expo-google-fonts/roboto-condensed'
 import * as SplashScreen from 'expo-splash-screen'
@@ -23,9 +25,11 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <MainNavigator/>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={styles.container}>
+        <MainNavigator/>
+      </SafeAreaView>
+    </Provider>
   );
 }
 
