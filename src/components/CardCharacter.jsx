@@ -4,9 +4,9 @@ import Fonts from '../constants/Fonts';
 
 const CardCharacter = ({ character, onSelected }) => {
   const {id, name, image, gender, species, origin, status, episode} = character;
-  
+  const characterDest = {id, name, image, gender, species, origin, status, episode}
   return (
-    <TouchableOpacity style={styles.card} onPress={() => onSelected({id, name, image, gender, species, origin, status, episode})}>
+    <TouchableOpacity style={styles.card} onPress={() => onSelected(characterDest)}>
       <ImageBackground style={styles.image} imageStyle={{borderRadius: 4}} source={{uri: image}}>
         <Text style={styles.text}>{name}</Text>
       </ImageBackground>
