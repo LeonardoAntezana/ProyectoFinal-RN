@@ -2,11 +2,11 @@ import { StyleSheet, Text, TouchableOpacity, ImageBackground } from 'react-nativ
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 
-const CardCharacter = ({ character, onSelected }) => {
-  const {id, name, image, gender, species, origin, status, episode} = character;
-  const characterDest = {id, name, image, gender, species, origin, status, episode}
+const CardCharacter = ({ character, onSelected, style }) => {
+  const {name, image} = character;
+
   return (
-    <TouchableOpacity style={styles.card} onPress={() => onSelected(characterDest)}>
+    <TouchableOpacity style={[styles.card, style]} onPress={() => onSelected(character)}>
       <ImageBackground style={styles.image} imageStyle={{borderRadius: 4}} source={{uri: image}}>
         <Text style={styles.text}>{name}</Text>
       </ImageBackground>
