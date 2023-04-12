@@ -6,6 +6,10 @@ import { useFonts, RobotoCondensed_400Regular, RobotoCondensed_700Bold } from '@
 import * as SplashScreen from 'expo-splash-screen'
 import MainNavigator from './src/navigator/MainNavigator';
 
+import { init } from './src/db';
+
+init().then(() => console.log("DB initialized"));
+
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
