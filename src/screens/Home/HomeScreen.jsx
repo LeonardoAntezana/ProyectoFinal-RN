@@ -9,7 +9,8 @@ const HomeScreen = ({navigation}) => {
   const { data: characters, isPending } = useCallApi(`${BASE_URL}/character`);
   
   const handleSelect = item => {
-    navigation.navigate('Details', {...item})
+    const {id, name, image, gender, species, origin, status, episode} = item
+    navigation.navigate('Details', {id, name, image, gender, species, originName: origin.name, status, numEpisodes: episode.length})
   }
 
   const renderCharacter = ({item}) => (
