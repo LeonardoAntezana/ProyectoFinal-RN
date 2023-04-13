@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
       borderColor: '#fff',
     },
     text: {
+      textTransform: 'uppercase',
       color: '#fff',
       fontSize: 20,
     }
