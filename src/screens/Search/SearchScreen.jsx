@@ -1,23 +1,46 @@
-import { useState, useRef } from 'react'
-import { StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native'
-import { ScreenCustom } from '../../components'
+import { useState, useRef, useEffect } from 'react'
+import BASE_URL from '../../constants/Request'
+import { StyleSheet, TextInput, TouchableOpacity, FlatList } from 'react-native'
+import { ScreenCustom, CardCharacter } from '../../components'
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../../constants/Colors';
 
-const SearchScreen = () => {
-  const [valueSearch, setValueSearch] = useState(null)
+const SearchScreen = ({ navigation }) => {
+
+  const [characters, setCharacters] = useState([])
+  const [valueSearch, setValueSearch] = useState(null)  
   const searchInput = useRef(null); 
-  
-  const onChangeInput = value => setValueSearch(value)
+
+  const getData = async () => {
+    if(valueSearch){
+      const res = await fetch(`${BASE_URL}/character/?name=${valueSearch}`);
+      const data = await res.json();
+      setCharacters(data.results)
+    }
+  }
+
+  useEffect(() => {
+    const timeout = setTimeout(() => getData(), 2000)
+    
+    return () => clearTimeout(timeout);
+  }, [valueSearch])
+
+  const onChangeInput = value => setValueSearch(value.toLowerCase())
 
   const handleOnPress = () => {
     searchInput.current.focus();
   }
 
-  const closeKeyboard = () => Keyboard.dismiss()
+  const handleSelect = item => {
+    const {id, name, image, gender, species, origin, status, episode} = item
+    navigation.navigate('Details', {id, name, image, gender, species, originName: origin.name, status, numEpisodes: episode.length})
+  }
+
+  const renderItem = ({ item }) => (
+    <CardCharacter character={item} onSelected={handleSelect}/>
+  )
 
   return (
-    <TouchableWithoutFeedback onPress={closeKeyboard}>
       <ScreenCustom style={styles.screen}>
         <TouchableOpacity style={styles.box} onPress={handleOnPress}>
           <Ionicons name='search-outline' size={20} color='#fff'/>
@@ -30,8 +53,12 @@ const SearchScreen = () => {
           maxLength={20}
           />
         </TouchableOpacity>
+        <FlatList
+        data={characters}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        />
       </ScreenCustom>
-    </TouchableWithoutFeedback>
   )
 }
 
@@ -39,7 +66,8 @@ export default SearchScreen
 
 const styles = StyleSheet.create({
   screen: {
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingBottom: 80,
   },
   box: {
     marginVertical: 20,
