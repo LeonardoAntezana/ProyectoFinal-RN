@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { StyleSheet } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { UserIcon } from '../components';
@@ -9,13 +10,14 @@ import DetailsScreen from '../screens/Home/DetailsScreen';
 const Stack = createNativeStackNavigator();
 
 const HomeNavigator = () => {
+  const user = useSelector(state => state.user.name)
   return (
     <Stack.Navigator
       screenOptions={{
       headerTitle: 'Rick y Morty',
       headerStyle: styles.header,
       headerTintColor: Colors.primary,
-      headerRight: () => <UserIcon letter='L'/>
+      headerRight: () => <UserIcon letter={user[0]}/>
     }}
       >
         <Stack.Screen
