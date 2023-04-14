@@ -1,4 +1,4 @@
-import { SIGN_UP } from "../actions/user.actions"
+import { SIGN_UP, SIGN_IN } from "../actions/user.actions"
 
 const initialState = {
     name: '',
@@ -9,6 +9,12 @@ const initialState = {
 const AuthReducer = (state = initialState, action) => {
     switch(action.type){
         case SIGN_UP:
+            return {
+                name: action.name,
+                userID: action.userId,
+                tokenID: action.token
+            }
+        case SIGN_IN:
             return {
                 name: action.name,
                 userID: action.userId,
