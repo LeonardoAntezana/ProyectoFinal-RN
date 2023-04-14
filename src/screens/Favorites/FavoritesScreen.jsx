@@ -1,9 +1,8 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { loadFavorites } from '../../store/actions/favorites.action'
-import { StyleSheet, FlatList, Text } from 'react-native'
-import { ScreenCustom, CardCharacter } from '../../components'
-import Fonts from '../../constants/Fonts'
+import { StyleSheet, FlatList } from 'react-native'
+import { ScreenCustom, CardCharacter, Title } from '../../components'
 
 const FavoritesScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const FavoritesScreen = ({ navigation }) => {
   if(state.length === 0){
     return (
       <ScreenCustom style={styles.screen}>
-        <Text style={styles.text}>No hay favoritos aun</Text>
+        <Title text='No hay favoritos aun' style={styles.text}/>
       </ScreenCustom>
     )
   }
@@ -48,9 +47,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    color: '#fff',
     textTransform: 'uppercase',
-    fontFamily: Fonts.robotoRegular
+    marginTop: 0,
   },
   card: {
     marginHorizontal: 50,
