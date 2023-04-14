@@ -2,13 +2,18 @@ import { StyleSheet, Text, TouchableOpacity, ImageBackground } from 'react-nativ
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
 
-const CardCharacter = ({ character, onSelected, style }) => {
+const CardCharacter = ({ character, onSelected, style, showContent = true }) => {
   const {name, image} = character;
 
   return (
     <TouchableOpacity style={[styles.card, style]} onPress={() => onSelected(character)}>
-      <ImageBackground style={styles.image} imageStyle={{borderRadius: 4}} source={{uri: image}}>
-        <Text style={styles.text}>{name}</Text>
+      <ImageBackground 
+      style={styles.image} 
+      imageStyle={{borderRadius: 4}} 
+      source={{uri: image}}
+      resizeMode='contain'
+      >
+        {showContent && <Text style={styles.text}>{name}</Text>}
       </ImageBackground>
     </TouchableOpacity>
   )
@@ -20,7 +25,7 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     height: 200,
-    margin: 10,
+    margin: 7,
   },
   image: {
     flex: 1,

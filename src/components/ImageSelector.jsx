@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import * as ImagePicker from 'expo-image-picker'
-import { StyleSheet, Text, View, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
+import ButtonOpacity from './ButtonOpacity'
+import Colors from '../constants/Colors'
 
-const ImageSelector = () => {
+const ImageSelector = ({ onSelect }) => {
 
   const [image, setImage] = useState('')
 
@@ -26,12 +28,22 @@ const ImageSelector = () => {
     }
   }
 
+  const handleSave = () => {
+    onSelect(image)
+    setImage('')
+  }
+
   return (
     <>
       <View style={styles.box}>
         {image ? <Image style={styles.image} source={{uri: image}}/> : <Text>Esperando foto...</Text>}
       </View>
-      <Button title='Tomar foto' onPress={handleTakeImage}/>
+      <ButtonOpacity 
+      title='Tomar foto' 
+      color={Colors.primary}
+      style={styles.buttonPhoto} 
+      onPress={handleTakeImage}/>
+      {image && <ButtonOpacity color={Colors.secondaryBlack} title='Definir como icono' onPress={handleSave}/>}
     </>
   )
 }
@@ -42,12 +54,15 @@ const styles = StyleSheet.create({
   box: {
     backgroundColor: '#fff',
     height: 200,
-    marginBottom: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },
   image: {
     width: '100%',
     height: '100%',
-  },  
+  },
+  buttonPhoto: {
+    marginTop: 40,
+    marginBottom: 10,
+  }  
 })
