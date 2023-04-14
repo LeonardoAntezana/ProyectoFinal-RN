@@ -1,11 +1,21 @@
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { userSetImage } from '../../store/actions/user.actions'
 import { ScreenCustom } from '../../components'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { ImageSelector } from '../../components'
 
-const CameraScreen = () => {
+const CameraScreen = ({ navigation }) => {
+
+  const dispatch = useDispatch();
+
+  const setImageUser = uri => {
+    dispatch(userSetImage(uri));
+  } 
+
   return (
     <ScreenCustom style={styles.screen}>
-        <ImageSelector/>
+        <ImageSelector onSelect={setImageUser}/>
     </ScreenCustom>
   )
 }
