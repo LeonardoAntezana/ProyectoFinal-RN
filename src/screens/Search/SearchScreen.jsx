@@ -17,10 +17,14 @@ const SearchScreen = ({ navigation }) => {
       const data = await res.json();
       setCharacters(data.results)
     }
+    else{
+      setValueSearch('')
+      setCharacters([])
+    }
   }
 
   useEffect(() => {
-    const timeout = setTimeout(() => getData(), 2000)
+    const timeout = setTimeout(() => getData(), 900)
     
     return () => clearTimeout(timeout);
   }, [valueSearch])
