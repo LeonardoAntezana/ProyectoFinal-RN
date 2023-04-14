@@ -3,6 +3,7 @@ import { AUTH_URL, SIGN_IN_URL } from "../../../database";
 
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_IN = 'SIGN_IN';
+export const USER_SET_IMAGE = 'USER_SET_IMAGE';
 
 export const signUp = (email, password) => {
     return async dispatch => {
@@ -89,3 +90,8 @@ export const signIn = (email, password) => {
         })
     }
 }
+
+export const userSetImage = (uri) => ({
+    type: USER_SET_IMAGE,
+    uri
+})
