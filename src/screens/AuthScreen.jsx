@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { signUp } from '../store/actions/user.actions'
-import { StyleSheet, Text, View } from 'react-native'
+import { signIn, signUp } from '../store/actions/user.actions'
+import { StyleSheet, View } from 'react-native'
 import { ScreenCustom, Input, ButtonOpacity } from '../components'
 import Colors from '../constants/Colors'
 
 const AuthScreen = () => {
  
-  const dispatch = useDispatch();
+  const [modeSelected, setModeSelected] = useState('signUp')
 
   const [email, setEmail] = useState('')
-
   const [password, setPassword] = useState('')
+  
+  const dispatch = useDispatch();
 
   const onChangeEmail = value => setEmail(value)
 
@@ -21,10 +22,27 @@ const AuthScreen = () => {
     dispatch(signUp(email, password))
   }
 
+  const handleLogin = () => {
+    dispatch(signIn(email, password))
+  } 
+
   return (
     <ScreenCustom style={styles.screen}>
         <View style={styles.box}>
-          <Text>AuthScreen</Text>
+          <View style={styles.mode}>
+            <ButtonOpacity 
+            title='SIGNUP'
+            color={modeSelected === 'signUp' ? Colors.primary : '#d6d3d3'}
+            style={[styles.modeButtons, styles.buttonSign]}
+            onPress={() => setModeSelected('signUp')}
+            />
+            <ButtonOpacity
+            title='LOGIN'
+            color={modeSelected === 'logIn' ? Colors.primary : '#d6d3d3'}
+            style={[styles.modeButtons, styles.buttonLog]}
+            onPress={() => setModeSelected('logIn')}
+            />
+          </View>
           <Input
             onChange={onChangeEmail}
             label='Correo electronico'
@@ -38,7 +56,10 @@ const AuthScreen = () => {
             maxLength={20}
             secureTextEntry
           />
-        <ButtonOpacity title='REGISTRARSE' style={styles.button} onPress={handleSign}/>
+        <ButtonOpacity
+        title={modeSelected === 'signUp' ? 'REGISTRARSE' : 'INICIAR SESION'}
+        style={styles.button}
+        onPress={modeSelected === 'signUp' ? handleSign : handleLogin}/>
         </View>
     </ScreenCustom>
   )
@@ -51,6 +72,21 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     justifyContent: 'center',
     padding: 60,
+  },
+  mode: {
+    flexDirection: 'row',
+  },
+  modeButtons:{
+    paddingHorizontal: 15,
+    borderRadius: 15,
+  },
+  buttonSign: {
+    borderTopRightRadius: 0,
+    borderBottomEndRadius: 0,
+  },
+  buttonLog: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
   },
   box: {
     alignItems: 'center',
