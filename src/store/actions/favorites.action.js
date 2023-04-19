@@ -9,7 +9,6 @@ export const addFavorite = (character) => {
         try{
             const {id, name, image, gender, species, originName, status, numEpisodes} = character
             const res = await insertFavorite(id, name, image, gender, species, originName, status, numEpisodes);
-            console.log(res)
             dispatch({type: ADD_FAVORITE, payload: character})
         }
         catch(error){
@@ -35,7 +34,6 @@ export const loadFavorites = () => {
         try {
             const res = await fetchFavorites();
             dispatch({type: LOAD_FAVORITES, payload: res.rows._array});
-            console.log(res.rows._array)
         }
         catch(error){
             throw error;

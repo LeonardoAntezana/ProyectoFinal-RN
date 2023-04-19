@@ -34,6 +34,7 @@ export const removeFavorite = (id) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction((tx) => {
             tx.executeSql(`DELETE FROM favorites where id = ${id}`,
+                [],
                 (_, result) => resolve(result),
                 (_, error) => reject(error)
             )
