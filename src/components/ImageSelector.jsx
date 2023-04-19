@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import * as ImagePicker from 'expo-image-picker'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Dimensions} from 'react-native'
 import ButtonOpacity from './ButtonOpacity'
 import Colors from '../constants/Colors'
 
@@ -53,7 +53,7 @@ export default ImageSelector;
 const styles = StyleSheet.create({
   box: {
     backgroundColor: '#fff',
-    height: 200,
+    height: Dimensions.get('screen').height > 600 ? 300 : 150,
     justifyContent: 'center',
     alignItems: 'center',
   },

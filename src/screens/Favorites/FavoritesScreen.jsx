@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { loadFavorites } from '../../store/actions/favorites.action'
-import { StyleSheet, FlatList } from 'react-native'
+import { StyleSheet, FlatList, Dimensions } from 'react-native'
 import { ScreenCustom, CardCharacter, Title } from '../../components'
+
+const { height } = Dimensions.get('screen');
 
 const FavoritesScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const FavoritesScreen = ({ navigation }) => {
   }
 
   return (
-    <ScreenCustom>
+    <ScreenCustom style={styles.screen}>
       <FlatList
       data={state}
       renderItem={renderCharacter}
@@ -43,8 +45,7 @@ export default FavoritesScreen
 
 const styles = StyleSheet.create({
   screen: {
-    justifyContent: 'center',
-    alignItems: 'center'
+    paddingBottom: 70,
   },
   text: {
     textTransform: 'uppercase',
@@ -53,5 +54,6 @@ const styles = StyleSheet.create({
   card: {
     marginHorizontal: 50,
     marginVertical: 20,
+    height: height < 600 ? height/3 : 200
   },
 })

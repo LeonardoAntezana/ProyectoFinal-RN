@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import BASE_URL from '../../constants/Request'
-import { StyleSheet, TextInput, TouchableOpacity, FlatList } from 'react-native'
+import { StyleSheet, TextInput, TouchableOpacity, FlatList, Dimensions } from 'react-native'
 import { ScreenCustom, CardCharacter } from '../../components'
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../../constants/Colors';
+
+const { height } = Dimensions.get('screen');
 
 const SearchScreen = ({ navigation }) => {
 
@@ -41,7 +43,7 @@ const SearchScreen = ({ navigation }) => {
   }
 
   const renderItem = ({ item }) => (
-    <CardCharacter character={item} onSelected={handleSelect}/>
+    <CardCharacter character={item} onSelected={handleSelect} style={styles.card}/>
   )
 
   return (
@@ -71,7 +73,7 @@ export default SearchScreen
 const styles = StyleSheet.create({
   screen: {
     alignItems: 'center',
-    paddingBottom: 80,
+    paddingBottom: height > 600 ? 80 : 70,
   },
   box: {
     marginVertical: 20,
@@ -82,6 +84,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5,
     backgroundColor: Colors.secondaryBlack,
+  },
+  card:{
+    height: height / 3 ,
   },
   text: {
     color: '#fff',

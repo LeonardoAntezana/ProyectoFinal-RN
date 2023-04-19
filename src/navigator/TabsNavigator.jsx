@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { TabIconCustom } from '../components';
 import Colors from '../constants/Colors'
@@ -7,6 +7,8 @@ import HomeNavigator from './HomeNavigator';
 import SearchNavigator from './SearchNavigator';
 import FavoritesNavigator from './FavoritesNavigator';
 import CameraNavigator from './CameraNavigator';
+
+const { height } = Dimensions.get('screen');
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -90,6 +92,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: 80,
+    height: height > 700 ? 80 : 70,
   },
 })

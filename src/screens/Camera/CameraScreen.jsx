@@ -5,7 +5,7 @@ import { ScreenCustom } from '../../components'
 import { StyleSheet } from 'react-native'
 import { ImageSelector } from '../../components'
 
-const CameraScreen = ({ navigation }) => {
+const CameraScreen = () => {
 
   const dispatch = useDispatch();
 

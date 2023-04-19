@@ -24,7 +24,7 @@ export default CardCharacter
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    height: 200,
+    height: 250,
     margin: 7,
   },
   image: {

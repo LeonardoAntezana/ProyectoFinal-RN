@@ -1,8 +1,10 @@
 import { useCallApi } from '../../hooks/useCallApi'
 import BASE_URL from '../../constants/Request'
-import { FlatList, StyleSheet, View } from 'react-native'
+import { FlatList, StyleSheet, View, Dimensions } from 'react-native'
 import { ScreenCustom, Title } from '../../components'
 import { CardCharacter } from '../../components'
+
+const { width, height } = Dimensions.get('screen');
 
 const HomeScreen = ({navigation}) => {
 
@@ -16,7 +18,7 @@ const HomeScreen = ({navigation}) => {
   }
 
   const renderCharacter = ({item}) => (
-    <CardCharacter character={item} onSelected={handleSelect}/>
+    <CardCharacter character={item} onSelected={handleSelect} style={styles.card}/>
   )
 
   const renderWanted = ({item}) => (
@@ -41,7 +43,7 @@ const HomeScreen = ({navigation}) => {
       ListHeaderComponent={() => {
         return(
         <View style={styles.wantedContainer}>
-        <Title text='Mas buscados'/>
+        <Title text='Mas buscados' style={styles.title}/>
         <FlatList
         data={wanted}
         renderItem={renderWanted}
@@ -49,7 +51,7 @@ const HomeScreen = ({navigation}) => {
         horizontal= {true}
         showsHorizontalScrollIndicator={false}
         />
-        <Title text='Personajes' style={{marginBottom: 0}}/>
+        <Title text='Personajes' style={[styles.title ,{marginBottom: 0}]}/>
         </View>
         )}}
       numColumns={2}
@@ -63,16 +65,22 @@ export default HomeScreen
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 15,
-    paddingBottom: 80,
+    paddingBottom: height > 600 ? 80 : 70,
+  },
+  card: {
+    height: height > 700 ? 250 : 180,
   },
   charac: {
     margin: 0,
     marginRight: 10,
-    width: 250,
-    height: 150,
+    width: width > 400 ? 250 : 190,
+    height: height > 700 ? 150 : 110,
   },
   wantedContainer: {
     marginHorizontal: 7,
     marginBottom: 20,
+  },
+  title: {
+    marginTop: width > 400 ? 40 : 25,
   }
 })

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { signIn, signUp } from '../store/actions/user.actions'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Dimensions } from 'react-native'
 import { ScreenCustom, Input, ButtonOpacity } from '../components'
 import Colors from '../constants/Colors'
+
+const { width } = Dimensions.get('screen');
 
 const AuthScreen = () => {
  
@@ -71,7 +73,6 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: Colors.primary,
     justifyContent: 'center',
-    padding: 60,
   },
   mode: {
     flexDirection: 'row',
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 25,
     backgroundColor: '#fff',
+    marginHorizontal: width > 400 ? 60 : 30,
   },
   button: {
     marginTop: 25,

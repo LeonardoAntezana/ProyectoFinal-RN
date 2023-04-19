@@ -1,7 +1,9 @@
-import { StyleSheet, Text, ImageBackground, View, Pressable } from 'react-native'
+import { StyleSheet, Text, ImageBackground, View, Pressable, Dimensions } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons';
 import Fonts from '../constants/Fonts';
 import Colors from '../constants/Colors';
+
+const { width, height } = Dimensions.get('screen');
 
 const DetailsCharacter = ({item, onSelect, exist}) => {
   const {name, image, gender, species, originName, status, numEpisodes} = item;
@@ -32,17 +34,19 @@ export default DetailsCharacter
 
 const styles = StyleSheet.create({
   title: {
+    textAlign: 'center',
     fontFamily: Fonts.robotoBold,
     fontSize: 22,
     color: '#fff',
+    marginVertical: 30,
   },
   image: {
-    marginVertical: 30,
     width: '100%',
-    height: 250,
+    height: height > 700 ? 250 : 200,
     alignItems: 'flex-end',
   },
   box: {
+    marginVertical: 15,
     width: '100%',
     padding: 15,
     backgroundColor: '#fff',
