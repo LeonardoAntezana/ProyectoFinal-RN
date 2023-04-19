@@ -7,8 +7,7 @@ const MainNavigator = () => {
   const user = useSelector(state => state.user.userID)
   return (
     <NavigationContainer>
-      {/* {user ? <TabsNavigator/> : <AuthScreen/>} */}
-      <TabsNavigator/>
+      {user ? <TabsNavigator/> : <AuthScreen/>}
     </NavigationContainer>
   )
 }
