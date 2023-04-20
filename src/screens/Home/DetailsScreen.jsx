@@ -36,6 +36,6 @@ const styles = StyleSheet.create({
   container: {
     flex: height > 600 ? 1 : 0,
     height: height < 600 ? height : 'auto',
-    justifyContent: height > 600 ? 'center' : 'flex-start'
+    justifyContent: height > 700 ? 'center' : 'flex-start',
   }
 })

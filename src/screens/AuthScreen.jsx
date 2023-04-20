@@ -8,7 +8,7 @@ import Colors from '../constants/Colors'
 const { width } = Dimensions.get('screen');
 
 const AuthScreen = () => {
- 
+  
   const [modeSelected, setModeSelected] = useState('signUp')
 
   const [email, setEmail] = useState('')
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: Colors.primary,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   mode: {
     flexDirection: 'row',
@@ -90,11 +91,13 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 0,
   },
   box: {
+    width: '80%',
+    maxWidth: '90%',
     alignItems: 'center',
     borderRadius: 6,
     padding: 25,
     backgroundColor: '#fff',
-    marginHorizontal: width > 400 ? 60 : 30,
+    // marginHorizontal: width > 400 ? 60 : 30,
   },
   button: {
     marginTop: 25,

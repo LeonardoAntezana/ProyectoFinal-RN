@@ -4,7 +4,7 @@ import { loadFavorites } from '../../store/actions/favorites.action'
 import { StyleSheet, FlatList, Dimensions } from 'react-native'
 import { ScreenCustom, CardCharacter, Title } from '../../components'
 
-const { height } = Dimensions.get('screen');
+const { height, width } = Dimensions.get('screen');
 
 const FavoritesScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const FavoritesScreen = ({ navigation }) => {
 
   if(state.length === 0){
     return (
-      <ScreenCustom style={styles.screen}>
+      <ScreenCustom style={[styles.screen, styles.noFavorites]}>
         <Title text='No hay favoritos aun' style={styles.text}/>
       </ScreenCustom>
     )
@@ -47,13 +47,17 @@ const styles = StyleSheet.create({
   screen: {
     paddingBottom: 70,
   },
+  noFavorites: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   text: {
     textTransform: 'uppercase',
     marginTop: 0,
   },
   card: {
-    marginHorizontal: 50,
+    marginHorizontal: width - width * 0.85,
     marginVertical: 20,
-    height: height < 600 ? height/3 : 200
+    height: height * 0.3
   },
 })

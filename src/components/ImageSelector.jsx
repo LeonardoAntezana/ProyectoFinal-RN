@@ -53,7 +53,7 @@ export default ImageSelector;
 const styles = StyleSheet.create({
   box: {
     backgroundColor: '#fff',
-    height: Dimensions.get('screen').height > 600 ? 300 : 150,
+    height: Dimensions.get('screen').height / 3,
     justifyContent: 'center',
     alignItems: 'center',
   },

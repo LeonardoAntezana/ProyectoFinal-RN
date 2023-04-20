@@ -22,7 +22,7 @@ const HomeScreen = ({navigation}) => {
   )
 
   const renderWanted = ({item}) => (
-    <CardCharacter style={styles.charac} character={item} onSelected={handleSelect} showContent={false}/>
+    <CardCharacter style={styles.characWanted} character={item} onSelected={handleSelect} showContent={false}/>
   )
 
   if(isPending){
@@ -68,13 +68,13 @@ const styles = StyleSheet.create({
     paddingBottom: height > 600 ? 80 : 70,
   },
   card: {
-    height: height > 700 ? 250 : 180,
+    height: height * 0.3,
   },
-  charac: {
+  characWanted: {
     margin: 0,
     marginRight: 10,
-    width: width > 400 ? 250 : 190,
-    height: height > 700 ? 150 : 110,
+    width: width * 0.6,
+    height: height / 6,
   },
   wantedContainer: {
     marginHorizontal: 7,

@@ -2,8 +2,7 @@ import React from 'react'
 import { StyleSheet, TextInput, Text } from 'react-native'
 import Fonts from '../constants/Fonts'
 
-const Input = ({ onChange, stateValue, type = 'default', label, placeholder, maxLength, ...moreProps }) => {
-  
+const Input = ({ onChange, value, type = 'default', label, placeholder, maxLength, ...moreProps }) => {
   return (
    <>
     <Text style={styles.label}>{label}</Text>
@@ -12,6 +11,7 @@ const Input = ({ onChange, stateValue, type = 'default', label, placeholder, max
     keyboardType={type}
     onChangeText={onChange}
     placeholder={placeholder}
+    value={value}
     maxLength={maxLength}
     {...moreProps}
     />

@@ -63,6 +63,7 @@ const SearchScreen = ({ navigation }) => {
         data={characters}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
+        contentContainerStyle={{justifyContent: 'center'}}
         />
       </ScreenCustom>
   )

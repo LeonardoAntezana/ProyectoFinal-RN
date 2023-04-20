@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: height > 700 ? 250 : 200,
+    height: height * 0.3,
     alignItems: 'flex-end',
   },
   box: {
