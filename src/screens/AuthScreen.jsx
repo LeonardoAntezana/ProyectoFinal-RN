@@ -105,7 +105,6 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 25,
     backgroundColor: '#fff',
-    // marginHorizontal: width > 400 ? 60 : 30,
   },
   button: {
     marginTop: 25,
