@@ -63,7 +63,7 @@ export const signIn = (email, password) => {
             const dataError = await res.json();
             const errorID = dataError.error.message;
 
-            let msj = 'Error al registrarse'
+            let msj = 'Error al iniciar sesion'
 
             if(errorID === 'EMAIL_NOT_FOUND'){
                 msj= 'El email no se encuentra registrado';

@@ -1,17 +1,20 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import * as ImagePicker from 'expo-image-picker'
-import { StyleSheet, Text, View, Image, Dimensions} from 'react-native'
+import { StyleSheet, Text, View, Image, Dimensions, Alert} from 'react-native'
 import ButtonOpacity from './ButtonOpacity'
 import Colors from '../constants/Colors'
 
 const ImageSelector = ({ onSelect }) => {
+
+  const state = useSelector(state => state.user.imageUri);
 
   const [image, setImage] = useState('')
 
   const verifyPermissions = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
     if(status !== 'granted'){
-      alert("Permisos denegados, para continuar aceptelos");
+      Alert.alert("Permisos denegados, para continuar aceptelos");
       return false;
     }
     return true;
@@ -39,7 +42,7 @@ const ImageSelector = ({ onSelect }) => {
         {image ? <Image style={styles.image} source={{uri: image}}/> : <Text>Esperando foto...</Text>}
       </View>
       <ButtonOpacity 
-      title='Tomar foto' 
+      title={state ? 'Cambiar icono' : 'Tomar foto'} 
       color={Colors.primary}
       style={styles.buttonPhoto} 
       onPress={handleTakeImage}/>

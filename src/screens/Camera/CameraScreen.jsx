@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { userSetImage } from '../../store/actions/user.actions'
 import { ScreenCustom } from '../../components'

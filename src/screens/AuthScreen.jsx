@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { signIn, signUp } from '../store/actions/user.actions'
-import { StyleSheet, View, Dimensions } from 'react-native'
+import { StyleSheet, View, Alert } from 'react-native'
 import { ScreenCustom, Input, ButtonOpacity } from '../components'
 import Colors from '../constants/Colors'
-
-const { width } = Dimensions.get('screen');
 
 const AuthScreen = () => {
   
@@ -21,11 +19,21 @@ const AuthScreen = () => {
   const onChangePassword = value => setPassword(value)
 
   const handleSign = () => {
-    dispatch(signUp(email, password))
+    if(email && password){
+      dispatch(signUp(email, password))
+    }
+    else{
+      Alert.alert('Ingrese datos')
+    }
   }
 
   const handleLogin = () => {
-    dispatch(signIn(email, password))
+    if(email && password){
+      dispatch(signIn(email, password))
+    }
+    else{
+      Alert.alert('Ingrese datos')
+    }
   } 
 
   return (
