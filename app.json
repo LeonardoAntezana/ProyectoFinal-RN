@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "proyecto-final",
-    "slug": "proyecto-final",
+    "name": "Morty Api",
+    "slug": "Morty Api",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
