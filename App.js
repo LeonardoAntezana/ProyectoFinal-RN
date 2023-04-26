@@ -8,7 +8,7 @@ import MainNavigator from './src/navigator/MainNavigator';
 
 import { init } from './src/db';
 
-init().then(() => console.log("DB initialized"));
+init();
 
 SplashScreen.preventAutoHideAsync();
 

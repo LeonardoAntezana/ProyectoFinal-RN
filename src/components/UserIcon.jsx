@@ -2,12 +2,12 @@ import { useSelector } from 'react-redux';
 import { StyleSheet, Text, TouchableOpacity, Image } from 'react-native'
 import Colors from '../constants/Colors'
 
-const UserIcon = ({ navigation }) => {
+const UserIcon = () => {
   const uri = useSelector(state => state.user.imageUri)
   const user = useSelector(state => state.user.name)
 
   return (
-    <TouchableOpacity style={styles.icon} onPress={() => console.log('click')}>
+    <TouchableOpacity style={styles.icon}>
       {uri 
       ? <Image style={styles.image} source={{uri: uri}} /> 
       : <Text style={styles.text}>{user[0]}</Text>}
