@@ -43,15 +43,15 @@ const HomeScreen = ({navigation}) => {
       ListHeaderComponent={() => {
         return(
         <View style={styles.wantedContainer}>
-        <Title text='Mas buscados' style={styles.title}/>
-        <FlatList
-        data={wanted}
-        renderItem={renderWanted}
-        keyExtractor={item => item.id}
-        horizontal= {true}
-        showsHorizontalScrollIndicator={false}
-        />
-        <Title text='Personajes' style={[styles.title ,{marginBottom: 0}]}/>
+          <Title text='Mas buscados' style={styles.title}/>
+          <FlatList
+          data={wanted}
+          renderItem={renderWanted}
+          keyExtractor={item => item.id}
+          horizontal= {true}
+          showsHorizontalScrollIndicator={false}
+          />
+          <Title text='Personajes' style={[styles.title ,{marginBottom: 0}]}/>
         </View>
         )}}
       numColumns={2}
