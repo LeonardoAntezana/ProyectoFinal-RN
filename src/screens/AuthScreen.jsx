@@ -23,7 +23,7 @@ const AuthScreen = () => {
       dispatch(signUp(email, password))
     }
     else{
-      Alert.alert('Ingrese datos')
+      Alert.alert('Datos incompletos')
     }
   }
 
@@ -32,7 +32,7 @@ const AuthScreen = () => {
       dispatch(signIn(email, password))
     }
     else{
-      Alert.alert('Ingrese datos')
+      Alert.alert('Datos incompletos')
     }
   } 
 
